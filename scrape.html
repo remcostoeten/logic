@@ -26,28 +26,20 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const statusElement = document.getElementById('online');
-            let isOnline = true;
+        // Select the status element
+let statusElement = document.getElementById('status');
 
-            // Function to update status
-            function updateStatus() {
-                if (isOnline) {
-                    statusElement.textContent = 'Online';
-                    statusElement.style.color = 'green';
-                } else {
-                    statusElement.textContent = 'Offline';
-                    statusElement.style.color = 'red';
-                }
-                isOnline = !isOnline;
-            }
-
-            // Initial status update
-            updateStatus();
-
-            // Periodically update status every 5 seconds (for demonstration)
-            setInterval(updateStatus, 5000);
-        });
+// Set an interval to toggle the status every 5 seconds
+setInterval(() => {
+    if (statusElement.textContent === 'Online') {
+        statusElement.textContent = 'Offline';
+        statusElement.setAttribute('title', 'Offline');
+    } else {
+        statusElement.textContent = 'Online';
+        statusElement.setAttribute('title', 'Online');
+    }
+}, 5000);
     </script>
+
 </body>
 </html>
