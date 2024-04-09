@@ -25,5 +25,29 @@
             </header>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const statusElement = document.getElementById('online');
+            let isOnline = true;
+
+            // Function to update status
+            function updateStatus() {
+                if (isOnline) {
+                    statusElement.textContent = 'Online';
+                    statusElement.style.color = 'green';
+                } else {
+                    statusElement.textContent = 'Offline';
+                    statusElement.style.color = 'red';
+                }
+                isOnline = !isOnline;
+            }
+
+            // Initial status update
+            updateStatus();
+
+            // Periodically update status every 5 seconds (for demonstration)
+            setInterval(updateStatus, 5000);
+        });
+    </script>
 </body>
 </html>
