@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Status</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <span>Lars</span>
+    <!-- Element matched by `//span[@title='Online']` -->
+    <span id="status" title="Online">Online</span>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const statusElement = document.getElementById('status');
+            let isOnline = true;
+
+            // Function to update status
+            function updateStatus() {
+                if (isOnline) {
+                    statusElement.textContent = 'Online';
+                    statusElement.style.color = 'green';
+                } else {
+                    statusElement.textContent = 'Offline';
+                    statusElement.style.color = 'red';
+                }
+                isOnline = !isOnline;
+            }
+
+            // Initial status update
+            updateStatus();
+
+            // Periodically update status every 5 seconds (for demonstration)
+            setInterval(updateStatus, 5000);
+        });
+    </script>
+</body>
+
+</html>
