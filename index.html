@@ -3,6 +3,17 @@
 <head>
     <title>whtsapp`</title>
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        window.onload = function () {
+            setInterval(function () {
+                var statusSpan = document.getElementById('contact-status');
+                var title = document.getElementsByTagName('title')[0];
+                var randomStatus = Math.random() > 0.5 ? 'Online' : 'Offline';
+                statusSpan.textContent = randomStatus;
+                title.textContent = 'whatsapp - ' + randomStatus;
+            }, Math.floor(Math.random() * 20000));
+        };
+    </script>
 </head>
 
 <body>
