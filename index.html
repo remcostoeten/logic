@@ -1,34 +1,54 @@
 <html>
 
 <head>
-    <title>whtsapp`</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Chat</title>
+    <style>
+        .sidebar {
+            width: 20%;
+            float: left;
+            background-color: #f0f0f0;
+            height: 100vh;
+            padding: 10px;
+        }
+
+        .main {
+            width: 60%;
+            float: right;
+            height: 100vh;
+            padding: 10px;
+        }
+
+        .name {
+            cursor: pointer;
+        }
+    </style>
     <script>
         window.onload = function () {
-            setInterval(function () {
-                var statusSpan = document.getElementById('contact-status');
-                var title = document.getElementsByTagName('title')[0];
-                var randomStatus = Math.random() > 0.5 ? 'Online' : 'Offline';
-                statusSpan.textContent = randomStatus;
-                title.textContent = 'whatsapp - ' + randomStatus;
-            }, Math.floor(Math.random() * 20000));
+            var names = document.getElementsByClassName('name');
+            var chatHeader = document.getElementById('chat-header');
+            for (var i = 0; i < names.length; i++) {
+                names[i].addEventListener('click', function () {
+                    var randomStatus = Math.random() > 0.5 ? 'Online' : 'Offline';
+                    chatHeader.textContent = this.textContent;
+                    document.querySelector('span[title="Online"]').textContent = randomStatus;
+                });
+            }
         };
     </script>
 </head>
 
 <body>
-    <div class="_amie" role="button">
-        <div class="_amif">
-            <div class="_amig">
-                <div class="_aou8 _aj_h"><span dir="auto" aria-label=""
-                        class="x1iyjqo2 x6ikm8r x10wlt62 x1n2onr6 xlyipyv xuxw1ft x1rg5ohu _ao3e"
-                        style="min-height: 0px;">Larsx<span id="contact-status"
-                            style="font-size: small; color: gray;"></span></span></div>
-            </div>
-        </div>
-        <div class="x78zum5 x1cy8zhl xisnujt x1nxh6w3 xcgms0a x16cd2qt"><span title="Online" aria-label=""
-                class="x1iyjqo2 x6ikm8r x10wlt62 xlyipyv xuxw1ft _ao3e selectable-text copyable-text"
-                style="min-height: 0px;">Offlin</span></div>
+    <div class="sidebar">
+        <div class="name">Lars</div>
+        <div class="name">Janes</div>
+        <div class="name">Freek</div>
+    </div>
+    <div class="main">
+        <h2 id="chat-header">Chat</h2>
+        <span title="Online" aria-label=""
+            class="x1iyjqo2 x6ikm8r x10wlt62 xlyipyv xuxw1ft _ao3e selectable-text copyable-text"
+            style="min-height: 0px;">Online</span>
+        <!-- Chat content goes here -->
     </div>
 </body>
 
