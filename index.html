@@ -1,34 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Test Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy WhatsApp Web</title>
     <style>
-        .status {
-            display: none;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
-        .online {
-            display: block;
+
+        .user {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .status {
             color: green;
         }
     </style>
-</head>
-<body>
-    <h1>Welcome to the Test Page</h1>
-    <span id="user">John Doe</span>
-    <span id="status" class="status">Offline</span>
-
     <script>
-        // Emulate the user going online and offline
-        setInterval(function() {
-            var statusElement = document.getElementById('status');
-            if (statusElement.className === 'status') {
-                statusElement.className = 'status online';
-                statusElement.textContent = 'Online';
-            } else {
-                statusElement.className = 'status';
-                statusElement.textContent = 'Offline';
+        document.addEventListener("DOMContentLoaded", function () {
+            const statusElement = document.getElementById("status");
+
+            function toggleStatus() {
+                if (statusElement.classList.contains("online")) {
+                    statusElement.textContent = "Offline";
+                    statusElement.classList.remove("online");
+                    statusElement.classList.add("offline");
+                } else {
+                    statusElement.textContent = "Online";
+                    statusElement.classList.remove("offline");
+                    statusElement.classList.add("online");
+                }
             }
-        }, 5000); // Change status every 5 seconds
+
+            // Change status every few seconds to a random interval
+            function changeStatusRandomly() {
+                const intervals = [3000, 10000, 5000]; // Possible intervals in milliseconds
+                const randomInterval = intervals[Math.floor(Math.random() * intervals.length)];
+                setTimeout(() => {
+                    toggleStatus();
+                    changeStatusRandomly(); // Schedule the next change
+                }, randomInterval);
+            }
+
+            changeStatusRandomly();
+        });
     </script>
+</head>
+
+<body>
+    <div class="user">
+        <h2 id="name">John Doe</h2>
+        <p>Status: <span id="status" class="status online">Online</span></p>
+    </div>
 </body>
+
 </html>
